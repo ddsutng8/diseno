@@ -5,7 +5,7 @@ public class partido {
 	static private String fecha;
 	static private String lugar;
 	static private int hora;
-	static private int cantidadDeJugadores=0;
+	private int cantidadDeJugadores=0;
 	
 	public String getLugar() {
 		return lugar;
@@ -40,6 +40,8 @@ public void setLugar(String lugar) {
 				 {
 			 
 			 partido.ListaDeJugadores.add(cantidadDeJugadores, elJugador) ;
+			 cantidadDeJugadores = cantidadDeJugadores + 1;
+			 
 		//	partido.incribirA jugador;
 		 
 // self.mostrarPorPantallaYobtenerDatos($hora, $fecha, $lugarDelPartido, $persona)

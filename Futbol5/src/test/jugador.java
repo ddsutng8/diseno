@@ -3,11 +3,18 @@ package test;
 public class jugador {
 
 	private String nombre;
+	private String tipoDeJugador;
 	int edad;
 	public String getNombre() {
 		return nombre;
 	}
 	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getTipoDeJugador() {
+		return nombre;
+	}
+	public void setTipodeJugador(String nombre) {
 		this.nombre = nombre;
 	}
 	

@@ -64,10 +64,6 @@ public void setLugar(String lugar) {
 
 
 	}
-	public void armarPosibleEquipo(ArrayList<jugador> ListaDeJugadores) {
-		//ver si poner atributo si esta en el equipo, o si conviene que devuelva una lista con
-	//todos los objetos que juegan
-		
-	}
+	
 
 }

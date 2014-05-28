@@ -12,10 +12,15 @@ public class Main {
 	public static void main(String[] args) {
 		
 		jugador pepito=new jugador();
-		jugador carlitos=new jugador();
-		partido primerPartido=new partido();
 		pepito.setEdad(30);
+	    pepito.setNombre("Pepito");
+		admin admin=new admin();
+		
+		jugador carlitos=new jugador();
 		carlitos.setEdad(88);
+		carlitos.setNombre("Carlitos");
+
+		partido primerPartido=new partido();
 		primerPartido.inscribirA(pepito);
 		primerPartido.inscribirA(carlitos);
 		
@@ -29,7 +34,9 @@ public class Main {
 		
 		System.out.println("La cantidad de jugadores es " + primerPartido.ListaDeJugadores.size());
 		
-
+      
+		admin.armarPosibleEquipo(primerPartido);
+		
 
 	}
 

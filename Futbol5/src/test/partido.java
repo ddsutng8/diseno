@@ -1,10 +1,12 @@
 package test;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class partido {
 	static private String fecha;
 	static private String lugar;
 	static private int hora;
+	private int jugadoresEstandar=0;
 	private int cantidadDeJugadores=0;
 	
 	public String getLugar() {
@@ -37,10 +39,20 @@ public void setLugar(String lugar) {
 	static ArrayList<jugador> ListaDeJugadores = new ArrayList<jugador>();
 
 	public void inscribirA(jugador elJugador) {
-				 {
-			 
-			 partido.ListaDeJugadores.add(cantidadDeJugadores, elJugador) ;
+				 { //recorro lista de jugadores para ver si hay 10 inscriptos de forma estandar
+					 Iterator <jugador> it = partido.ListaDeJugadores.iterator();  
+						
+						while(it.hasNext())
+						{
+							if (it.next().getTipoDeJugador() == "Estandar" ) jugadoresEstandar++;
+						}
+			if (jugadoresEstandar < 10) {
+						partido.ListaDeJugadores.add(cantidadDeJugadores, elJugador) ;
 			 cantidadDeJugadores = cantidadDeJugadores + 1;
+			}
+			else {
+				System.out.println("No hay mas lugar, hay que avisar a admin(parte 2 tp) ");
+			}
 			 
 		//	partido.incribirA jugador;
 		 
@@ -51,6 +63,11 @@ public void setLugar(String lugar) {
 			}
 
 
+	}
+	public void armarPosibleEquipo(ArrayList<jugador> ListaDeJugadores) {
+		//ver si poner atributo si esta en el equipo, o si conviene que devuelva una lista con
+	//todos los objetos que juegan
+		
 	}
 
 }

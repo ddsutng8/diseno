@@ -1,7 +1,7 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 import java.util.Iterator;
 
 public class Main {
@@ -9,33 +9,41 @@ public class Main {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void  main(String args[]) {
 		
-		jugador pepito=new jugador();
+		jugador pepito=new jugadorEstandar();
 		pepito.setEdad(30);
 	    pepito.setNombre("Pepito");
+	    pepito.settipodeJugador("Estandar");
 		admin admin=new admin();
 		
-		jugador carlitos=new jugador();
+		jugador carlitos=new jugadorEstandar();
 		carlitos.setEdad(88);
 		carlitos.setNombre("Carlitos");
+		carlitos.settipodeJugador("Estandar");
 
 		partido primerPartido=new partido();
-		primerPartido.inscribirA(pepito);
-		primerPartido.inscribirA(carlitos);
+		pepito.inscribirmeA(primerPartido);
+		carlitos.inscribirmeA(primerPartido);
 		
-		Iterator <jugador> it = primerPartido.ListaDeJugadores.iterator();  
+//		Iterator <jugador> it = primerPartido.ListaDeJugadores.iterator();  
 	   //System.out.println(primerPartido.ListaDeJugadores.get(0).edad);
 		
-		while(it.hasNext())
-		{
-		    System.out.println(it.next().edad);
-		}
-		
+				
 		System.out.println("La cantidad de jugadores es " + primerPartido.ListaDeJugadores.size());
 		
       
 		admin.armarPosibleEquipo(primerPartido);
+		
+		System.out.println("La cantidad de jug inscriptos son " + primerPartido.JugadoresSeleccionados.size());
+		Iterator <jugador> it2 = primerPartido.JugadoresSeleccionados.iterator();  
+		   //System.out.println(primerPartido.ListaDeJugadores.get(0).edad);
+			
+			while(it2.hasNext())
+			{
+			    System.out.println("Jugador "  + it2.next().getNombre());
+			}
+			
 		
 
 	}

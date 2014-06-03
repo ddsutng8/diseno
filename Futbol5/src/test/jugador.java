@@ -3,19 +3,26 @@ package test;
 public class jugador {
 
 	private String nombre;
-	private String tipoDeJugador;
+	 String tipoDeJugador;
+	 String condicionRequeridaPartido;
 	int edad;
+	public String getcondicionRequeridaPartido() {
+		return condicionRequeridaPartido;
+	}
+	public void setcondicionRequeridaPartido(String condicionRequeridaPartido) {
+		this.condicionRequeridaPartido = condicionRequeridaPartido;
+	}
 	public String getNombre() {
 		return nombre;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getTipoDeJugador() {
-		return nombre;
+	public String gettipoDeJugador() {
+		return tipoDeJugador;
 	}
-	public void setTipodeJugador(String nombre) {
-		this.nombre = nombre;
+	public void settipodeJugador(String tipoDeJugador) {
+		this.tipoDeJugador = tipoDeJugador;
 	}
 	
 	public int getEdad(){

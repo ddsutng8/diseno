@@ -43,21 +43,15 @@ public class partido {
 		this.fecha = nombre;
 	}
 
-	public int getEdad() {
+	public int getHora() {
 		return hora;
 	}
 
-	public void setEdad(int edad) {
-		this.hora = edad;
+	public void setHora(int hora) {
+		this.hora = hora;
 	}
 
-	public int cantidadDeJugadores() {
-		return cantidadDeJugadores;
-	}
-
-	public void cantidadDeJugadores(int edad) {
-		this.cantidadDeJugadores = edad;
-	}
+	
 
 	ArrayList<jugador> ListaDeJugadores = new ArrayList<jugador>();
 	List<jugador> JugadoresSeleccionados = new ArrayList<jugador>();
@@ -67,25 +61,23 @@ public class partido {
 			// estandar
 
 			// if (this.ListaDeJugadores.size() <=10) {
-			Iterator<jugador> it = this.ListaDeJugadores.iterator();
+			List<jugador> it = this.ListaDeJugadores;
 
-			while (it.hasNext()) {
-				if (it.next().gettipoDeJugador() == "Estandar")
+			for(jugador elem : it) {
+				if (elem.gettipoDeJugador() == "Estandar")
 					jugadoresEstandar++;
 			}
 			if (jugadoresEstandar < 10) {
 				this.ListaDeJugadores.add(cantidadDeJugadores, elJugador);
-				cantidadDeJugadores = cantidadDeJugadores + 1;
+				cantidadDeJugadores++;
 				if (cantidadDeJugadores >= 10) {
-					System.out
-							.println("avisar que el partido esta confirmado, no cerrado porque todavia se puede agregar gente");
-					envioMensaje.enviarMensajeAAdmin();
+//se le envia mensaje a admin, ya q se llego a los 10 inscriptos, pero no se cerro la inscripcion
+					envioMensaje.partidoConfirmado(this);
 				}
 
 			} else {
 				this.cerrado = true;
-				System.out
-						.println("No hay mas lugar, se cierra partido. hay que avisar a admin(parte 2 tp) ");
+	//	No hay mas lugar, se cierra partido. hay que avisar a admin(parte 2 tp)
 				envioMensaje.enviarMensajeAAdmin();
 			}
 
@@ -97,7 +89,7 @@ public class partido {
 			// self.listaDeJugadores.Agregar( $persona)}
 
 		}
-
+jugadoresEstandar=0;
 	}
 
 }

@@ -39,16 +39,17 @@ public class admin {
 			
 			}
 //recorro lista de jugadores y agrego solidarios
-			Iterator<jugador> it3 = elPartido.ListaDeJugadores.iterator();
-			while (it3.hasNext()) {
-				if (it3.next().gettipoDeJugador() == "Solidario" && elPartido.JugadoresSeleccionados.size() < 10)
-					elPartido.JugadoresSeleccionados.add(posicionJugadorSeleccionado, it3.next());
+			List<jugador> it3 = elPartido.ListaDeJugadores;
+			for (jugador elem : it3) {
+				if (elem.gettipoDeJugador() == "Solidario" && elPartido.JugadoresSeleccionados.size() < 10)
+					elPartido.JugadoresSeleccionados.add(posicionJugadorSeleccionado, elem);
+				
 				posicionJugadorSeleccionado++;
 			}
-			Iterator<jugador> it4 = elPartido.ListaDeJugadores.iterator();
-			while (it4.hasNext()) {
-				if (it4.next().gettipoDeJugador() == "Solidario" && elPartido.JugadoresSeleccionados.size() < 10)
-					elPartido.JugadoresSeleccionados.add(posicionJugadorSeleccionado, it4.next());
+			List<jugador> it4 = elPartido.ListaDeJugadores;
+			for (jugador elem : it4) {
+				if (elem.gettipoDeJugador() == "Solidario" && elPartido.JugadoresSeleccionados.size() < 10)
+					elPartido.JugadoresSeleccionados.add(posicionJugadorSeleccionado, elem);
 				posicionJugadorSeleccionado++;
 			}
 			

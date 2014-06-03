@@ -1,6 +1,5 @@
 package test;
 
-import java.util.Iterator;
 
 class jugadorEstandar extends jugador {
 

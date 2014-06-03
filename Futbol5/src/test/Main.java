@@ -11,6 +11,8 @@ public class Main {
 	 */
 	public static void  main(String args[]) {
 		admin admin=new admin();
+		mockEnvioMensajes mockObject = new mockEnvioMensajes();
+		
 		
 		jugador pepito=new jugadorEstandar();
 		pepito.setEdad(30);
@@ -62,7 +64,16 @@ public class Main {
 		carlitos.setNombre("Carlitos");
 		carlitos.settipodeJugador("Estandar");
 
-		partido primerPartido=new partido();
+		jugador gerardo=new jugadorEstandar();
+		gerardo.setEdad(88);
+		gerardo.setNombre("Gerardo");
+		gerardo.settipodeJugador("Condicional");
+		/*creo mockobject*/
+		mockEnvioMensajes envioMensaje = new mockEnvioMensajes();
+		
+		/*se lo mando a partido*/
+		partido primerPartido=new partido(envioMensaje);
+
 		
 		pepito.inscribirmeA(primerPartido);
 		carlitos.inscribirmeA(primerPartido);
@@ -71,15 +82,15 @@ public class Main {
 		cacho.inscribirmeA(primerPartido);
 		gato.inscribirmeA(primerPartido);
 		marcelo.inscribirmeA(primerPartido);
-//		luis.inscribirmeA(primerPartido);
+		luis.inscribirmeA(primerPartido);
 		german.inscribirmeA(primerPartido);
-//		franco
-		
+//		franco.inscribirmeA(primerPartido);
+	
+		gerardo.inscribirmeA(primerPartido);
 		
 //		Iterator <jugador> it = primerPartido.ListaDeJugadores.iterator();  
 	   //System.out.println(primerPartido.ListaDeJugadores.get(0).edad);
 		
-				
 		System.out.println("La cantidad de jugadores es " + primerPartido.ListaDeJugadores.size());
 		
       

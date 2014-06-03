@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.Iterator;
 
 public class partido {
+	
+	/*  recibo mock object o implementacion real  */
+	public  partido(envioMensajes anenvioMensajes) {
+		envioMensaje = anenvioMensajes;
+	}
 	String fecha;
 	String lugar;
 	String condicionPartido;
@@ -15,9 +20,6 @@ public class partido {
 	int cantidadDeJugadores = 0;
 	envioMensajes envioMensaje;
 
-	public void envio(envioMensajes anenvioMensajes) {
-		envioMensaje = anenvioMensajes;
-	}
 
 	public String getLugar() {
 		return lugar;
@@ -56,11 +58,16 @@ public class partido {
 	ArrayList<jugador> ListaDeJugadores = new ArrayList<jugador>();
 	List<jugador> JugadoresSeleccionados = new ArrayList<jugador>();
 
+	
+	
+	
+	
 	public void inscribirA(jugador elJugador) {
 		{ // recorro lista de jugadores para ver si hay 10 inscriptos de forma
 			// estandar
 
 			// if (this.ListaDeJugadores.size() <=10) {
+			
 			List<jugador> it = this.ListaDeJugadores;
 
 			for(jugador elem : it) {
@@ -70,14 +77,19 @@ public class partido {
 			if (jugadoresEstandar < 10) {
 				this.ListaDeJugadores.add(cantidadDeJugadores, elJugador);
 				cantidadDeJugadores++;
-				if (cantidadDeJugadores >= 10) {
+				if ( (jugadoresEstandar == 9) && (elJugador.tipoDeJugador== "Estandar")){
+					// , se cierra el partido(10 jug estandar)
+					this.cerrado=true;
+					envioMensaje.enviarMensajeAAdmin();
+				}
+				if (cantidadDeJugadores >= 10 && this.cerrado==false ) {
 //se le envia mensaje a admin, ya q se llego a los 10 inscriptos, pero no se cerro la inscripcion
 					envioMensaje.partidoConfirmado(this);
 				}
 
 			} else {
 				this.cerrado = true;
-	//	No hay mas lugar, se cierra partido. hay que avisar a admin(parte 2 tp)
+				// , se cierra el partido(10 jug estandar)
 				envioMensaje.enviarMensajeAAdmin();
 			}
 

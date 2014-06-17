@@ -101,7 +101,27 @@ public class partido {
 			// self.listaDeJugadores.Agregar( $persona)}
 
 		}
-jugadoresEstandar=0;
+	jugadoresEstandar=0;
 	}
+	
+	//Calificacion de los jugadores --> Falta analizar que se ejecute cuando el partido finaliza
+		
+	public void calificacion_jugadores(){
+				
+		for(jugador elJugadorQueCalifica: ListaDeJugadores){
+			for(jugador elJugadorCalificado: ListaDeJugadores){
+				if(elJugadorQueCalifica.equals(elJugadorCalificado)){
+							
+					} else {
+							
+					elJugadorQueCalifica.calificar(elJugadorCalificado);
+				}
+			}
+					
+		}
+				
+	}
+	
+	// FIN Calificacion de jugadores	
 
 }

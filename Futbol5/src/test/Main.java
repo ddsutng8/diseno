@@ -6,107 +6,102 @@ import java.util.Iterator;
 
 public class Main {
 
-	/**
-	 * @param args
-	 */
 	public static void  main(String args[]) {
 		admin admin=new admin();
-		mockEnvioMensajes mockObject = new mockEnvioMensajes();
-		
-		
+
 		jugador pepito=new jugadorEstandar();
 		pepito.setEdad(30);
-	    pepito.setNombre("Pepito");
-	    pepito.settipodeJugador("Estandar");
-	    
-	    jugador franco=new jugadorEstandar();
-	    franco.setEdad(30);
-	    franco.setNombre("Franco");
-	    franco.settipodeJugador("Estandar");	    
+		pepito.setNombre("Pepito");
 		
-	    jugador german=new jugadorEstandar();
-	    german.setEdad(30);
-	    german.setNombre("German");
-	    german.settipodeJugador("Estandar");
-	    
-	    jugador luis=new jugadorEstandar();
+
+		jugador franco=new jugadorEstandar();
+		franco.setEdad(30);
+		franco.setNombre("Franco");
+			    
+
+		jugador german=new jugadorEstandar();
+		german.setEdad(30);
+		german.setNombre("German");
+		
+
+		jugador luis=new jugadorEstandar();
 		luis.setEdad(30);
-	    luis.setNombre("luis");
-	    luis.settipodeJugador("Estandar");
-	    
-	    jugador marcelo=new jugadorEstandar();
+		luis.setNombre("luis");
+		
+
+		jugador marcelo=new jugadorEstandar();
 		marcelo.setEdad(30);
 		marcelo.setNombre("marcelo");
-		marcelo.settipodeJugador("Estandar");
-	    
-	    jugador gato=new jugadorEstandar();
-		gato.setEdad(30);
-		gato.setNombre("gato");
-		gato.settipodeJugador("Estandar");
-	    
-	    jugador cacho=new jugadorEstandar();
-	    cacho.setEdad(30);
-	    cacho.setNombre("cacho");
-	    cacho.settipodeJugador("Estandar");
-	    
-	    jugador gay=new jugadorEstandar();
-		gay.setEdad(30);
-		gay.setNombre("gay");
-		gay.settipodeJugador("Estandar");
-	    
-	    jugador facu=new jugadorEstandar();
+		
+
+		jugador Juan=new jugadorEstandar();
+		Juan.setEdad(30);
+		Juan.setNombre("Juan");
+		
+
+		jugador cacho=new jugadorEstandar();
+		cacho.setEdad(30);
+		cacho.setNombre("cacho");
+		
+
+		jugador pedro=new jugadorEstandar();
+		pedro.setEdad(30);
+		pedro.setNombre("pedro");
+		
+
+		jugador facu=new jugadorEstandar();
 		facu.setEdad(30);
 		facu.setNombre("facu");
-		facu.settipodeJugador("Estandar");
-	    
+		
+
 		jugador carlitos=new jugadorEstandar();
 		carlitos.setEdad(88);
 		carlitos.setNombre("Carlitos");
-		carlitos.settipodeJugador("Estandar");
-
-		jugador gerardo=new jugadorEstandar();
+		
+		jugadorSolidario gerardo=new jugadorSolidario();
 		gerardo.setEdad(88);
 		gerardo.setNombre("Gerardo");
-		gerardo.settipodeJugador("Condicional");
+		
+
+//		jugador nicolas=new jugadorEstandar();
+//		nicolas.setEdad(88);
+//		nicolas.setNombre("Nicolas");
+//		nicolas.settipodeJugador("Estandar");
 		/*creo mockobject*/
 		mockEnvioMensajes envioMensaje = new mockEnvioMensajes();
-		
-		/*se lo mando a partido*/
+
 		partido primerPartido=new partido(envioMensaje);
 
-		
+
 		pepito.inscribirmeA(primerPartido);
-		carlitos.inscribirmeA(primerPartido);
 		facu.inscribirmeA(primerPartido);
-		gay.inscribirmeA(primerPartido);
+		pedro.inscribirmeA(primerPartido);
 		cacho.inscribirmeA(primerPartido);
-		gato.inscribirmeA(primerPartido);
+		Juan.inscribirmeA(primerPartido);
 		marcelo.inscribirmeA(primerPartido);
+		gerardo.inscribirmeA(primerPartido); // solidario
 		luis.inscribirmeA(primerPartido);
 		german.inscribirmeA(primerPartido);
-//		franco.inscribirmeA(primerPartido);
-	
-		gerardo.inscribirmeA(primerPartido);
-		
-//		Iterator <jugador> it = primerPartido.ListaDeJugadores.iterator();  
-	   //System.out.println(primerPartido.ListaDeJugadores.get(0).edad);
-		
-		System.out.println("La cantidad de jugadores es " + primerPartido.ListaDeJugadores.size());
-		
-      
+		franco.inscribirmeA(primerPartido);
+		carlitos.inscribirmeA(primerPartido);
+
+		//nicolas.inscribirmeA(primerPartido);
+
+		System.out.println("La cantidad de jugadores postulados: " + primerPartido.ListaDeJugadores.size());
+
 		admin.armarPosibleEquipo(primerPartido);
-		
-		System.out.println("La cantidad de jug inscriptos son " + primerPartido.JugadoresSeleccionados.size());
-		Iterator <jugador> it2 = primerPartido.JugadoresSeleccionados.iterator();  
-		   //System.out.println(primerPartido.ListaDeJugadores.get(0).edad);
-			
-			while(it2.hasNext())
-			{
-			    System.out.println("Jugador "  + it2.next().getNombre());
-			}
-			
-		
 
+		System.out.println("La cantidad de jugadores inscriptos: " + primerPartido.JugadoresSeleccionados.size());
+		Iterator <jugador> it2 = primerPartido.JugadoresSeleccionados.iterator();  		
+		while(it2.hasNext())
+		{
+			System.out.println("Jugador "  + it2.next().getNombre());
+		}
+	
+		
+		primerPartido.calificacion_jugadores();
+		
+		pepito.proponerAmigo(carlitos, admin, primerPartido);
+		
 	}
-
 }

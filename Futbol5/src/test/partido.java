@@ -1,21 +1,20 @@
 package test;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.Iterator;
-
 public class partido {
-	
+
 	/*  recibo mock object o implementacion real  */
 	public  partido(envioMensajes anenvioMensajes) {
 		envioMensaje = anenvioMensajes;
 	}
-	String fecha;
+	Date fecha;
 	String lugar;
 	String condicionPartido;
-	boolean cerrado;
-	private int hora;
+	int hora;
+	boolean cerrado=false;	
 	int jugadoresEstandar = 0;
 	int cantidadDeJugadores = 0;
 	envioMensajes envioMensaje;
@@ -24,92 +23,75 @@ public class partido {
 	public String getLugar() {
 		return lugar;
 	}
-
 	public void setLugar(String lugar) {
 		this.lugar = lugar;
-	}
-
-	public String condicionPartido() {
-		return lugar;
-	}
-
-	public void condicionPartido(String lugar) {
-		this.lugar = lugar;
-	}
-
-	public String getNombre() {
-		return fecha;
-	}
-
-	public void setNombre(String nombre) {
-		this.fecha = nombre;
 	}
 
 	public int getHora() {
 		return hora;
 	}
-
 	public void setHora(int hora) {
 		this.hora = hora;
 	}
 
-	
+	public Date getFecha() {
+		return fecha;
+	}
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 
-	ArrayList<jugador> ListaDeJugadores = new ArrayList<jugador>();
+	public String getCondicionPartido() {
+		return condicionPartido;
+	}
+	public void setCondicionPartido(String condicionPartido) {
+		this.condicionPartido = condicionPartido;
+	}
+
+	public int getCantidadDeJugadores(){
+		return ListaDeJugadores.size();
+	}
+	public int getJugadoresEstandar(){
+		return jugadoresEstandar;
+	}
+	List<jugador> ListaDeJugadores = new ArrayList<jugador>();
 	List<jugador> JugadoresSeleccionados = new ArrayList<jugador>();
-
+	List<infraccion> ListaInfracciones = new ArrayList<infraccion>();
 	
-	
-	
-	
-	public void inscribirA(jugador elJugador) {
-		{ // recorro lista de jugadores para ver si hay 10 inscriptos de forma
-			// estandar
-
-			// if (this.ListaDeJugadores.size() <=10) {
-			
-			List<jugador> it = this.ListaDeJugadores;
-
-			for(jugador elem : it) {
-				if (elem.gettipoDeJugador() == "Estandar")
-					jugadoresEstandar++;
-			}
+	public void inscribirA(jugador elJugador) { 
+		// Agrego si la inscripcio no esta cerrada
+		if (this.cerrado==false) {
 			if (jugadoresEstandar < 10) {
-				this.ListaDeJugadores.add(cantidadDeJugadores, elJugador);
-				cantidadDeJugadores++;
-				if ( (jugadoresEstandar == 9) && (elJugador.tipoDeJugador== "Estandar")){
-					// , se cierra el partido(10 jug estandar)
+				this.ListaDeJugadores.add(elJugador);
+				if (elJugador instanceof jugadorEstandar) {
+					jugadoresEstandar++;
+				}
+				if ( (jugadoresEstandar == 10)){
+					// Se cierra el partido(10 jugadores estandar)
 					this.cerrado=true;
 					envioMensaje.enviarMensajeAAdmin();
 				}
-				if (cantidadDeJugadores >= 10 && this.cerrado==false ) {
-//se le envia mensaje a admin, ya q se llego a los 10 inscriptos, pero no se cerro la inscripcion
+				if (this.getCantidadDeJugadores() >= 10 && this.cerrado==false ) {
+					//se le envia mensaje a admin, ya q se llego a los 10 inscriptos, pero no se cerro la inscripcion
 					envioMensaje.partidoConfirmado(this);
 				}
-
-			} else {
-				this.cerrado = true;
-				// , se cierra el partido(10 jug estandar)
-				envioMensaje.enviarMensajeAAdmin();
 			}
-
-			// partido.incribirA jugador;
-
-			// self.mostrarPorPantallaYobtenerDatos($hora, $fecha,
-			// $lugarDelPartido, $persona)
-			// self.validarSiHayLugarYNoEsCondicional($persona.modo)
-			// self.listaDeJugadores.Agregar( $persona)}
-
+		} else {
+			//informo qe el partido esta cerrado
+			System.out.println("La inscripcion al partido esta cerrada");
 		}
-	jugadoresEstandar=0;
+	}
+	public void penalizar(jugador elJugador){
+		infraccion infraccion = new infraccion();
+		infraccion.setJugador(elJugador);
+		infraccion.setMotivo("No indico reemplazo");
+		ListaInfracciones.add(infraccion);
 	}
 	
-	//Calificacion de los jugadores --> Falta analizar que se ejecute cuando el partido finaliza
-		
 	public void calificacion_jugadores(){
-				
-		for(jugador elJugadorQueCalifica: ListaDeJugadores){
-			for(jugador elJugadorCalificado: ListaDeJugadores){
+		
+		for(jugador elJugadorQueCalifica: JugadoresSeleccionados){
+			for(jugador elJugadorCalificado: JugadoresSeleccionados){
 				if(elJugadorQueCalifica.equals(elJugadorCalificado)){
 							
 					} else {
@@ -122,6 +104,4 @@ public class partido {
 				
 	}
 	
-	// FIN Calificacion de jugadores
-
 }

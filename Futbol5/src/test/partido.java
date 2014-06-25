@@ -88,20 +88,20 @@ public class partido {
 		ListaInfracciones.add(infraccion);
 	}
 	
-	public void calificacion_jugadores(){
-		
-		for(jugador elJugadorQueCalifica: JugadoresSeleccionados){
-			for(jugador elJugadorCalificado: JugadoresSeleccionados){
-				if(elJugadorQueCalifica.equals(elJugadorCalificado)){
-							
-					} else {
-							
-					elJugadorQueCalifica.calificar(elJugadorCalificado);
-				}
-			}
-					
-		}
-				
-	}
+//	public void calificacion_jugadores(){
+//		
+//		for(jugador elJugadorQueCalifica: JugadoresSeleccionados){
+//			for(jugador elJugadorCalificado: JugadoresSeleccionados){
+//				if(elJugadorQueCalifica.equals(elJugadorCalificado)){
+//							
+//					} else {
+//							
+//					elJugadorQueCalifica.calificar(elJugadorCalificado);
+//				}
+//			}
+//					
+//		}
+//				
+//	}
 	
 }

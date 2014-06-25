@@ -67,6 +67,7 @@ public class Main {
 //		nicolas.setEdad(88);
 //		nicolas.setNombre("Nicolas");
 //		nicolas.settipodeJugador("Estandar");
+		
 		/*creo mockobject*/
 		mockEnvioMensajes envioMensaje = new mockEnvioMensajes();
 
@@ -99,7 +100,8 @@ public class Main {
 		}
 	
 		
-		primerPartido.calificacion_jugadores();
+//		primerPartido.calificacion_jugadores();
+		carlitos.calificar(gerardo, 2, "es de madera!!");
 		
 		pepito.proponerAmigo(carlitos, admin, primerPartido);
 		

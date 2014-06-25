@@ -65,15 +65,15 @@ public class jugador {
 	}
 
 	//Calificacion De Jugadores
-	public void calificar(jugador elJugadorCalificado) {
+	public void calificar(jugador elJugadorCalificado, int nota, String critica) {
 		
 		calificaciones calificacion = new calificaciones();
-		calificacion.setComentario("Comentario De Prueba");
-		calificacion.setCalificacion(7);
+		calificacion.setComentario(critica);
+		calificacion.setCalificacion(nota);
 		calificacion.setCalificador(this);
 		calificacion.setCalificado(elJugadorCalificado);
 		
-		elJugadorCalificado.ListaDeCalificaciones.add(calificacion);
+		this.ListaDeCalificaciones.add(calificacion);
 		System.out.println(this.getNombre() + " califica a " + elJugadorCalificado.getNombre() + " con nota " + calificacion.calificacion + " y critica " + calificacion.getComentario());
 		
 	}

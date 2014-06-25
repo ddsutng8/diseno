@@ -78,7 +78,7 @@ public class jugador {
 		}
 		else
 		{
-			System.out.println("El jugador " +this.getNombre()+ " no participó de este partido");
+			System.out.println("El jugador " +this.getNombre()+ " quizo calificar, pero no participó de este partido");
 		}
 	}
 	

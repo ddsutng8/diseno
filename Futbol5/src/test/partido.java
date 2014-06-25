@@ -95,7 +95,7 @@ public class partido {
 //				if(elJugadorQueCalifica.equals(elJugadorCalificado)){
 //							
 //					} else {
-//							
+//							this.almacenarTabla(jugador jugadorQueCalifica,JugadorCalificado
 //					elJugadorQueCalifica.calificar(elJugadorCalificado);
 //				}
 //			}
@@ -103,5 +103,12 @@ public class partido {
 //		}
 //				
 //	}
-	
+// por ahora esto recorre cada lista de calificaciones de cada jugador seleccionado:
+	//	public void almacenarTabla(){
+//		for(jugador elJugadorQueCalifica: JugadoresSeleccionados){
+//			for(calificaciones calificacion: elJugadorQueCalifica.ListaDeCalificaciones  ){
+//				
+//			}
+//		}
+//	}
 }

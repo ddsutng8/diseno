@@ -65,8 +65,8 @@ public class jugador {
 	}
 
 	//Calificacion De Jugadores
-	public void calificar(jugador elJugadorCalificado, int nota, String critica) {
-		
+	public void calificar(partido elPartido, jugador elJugadorCalificado, int nota, String critica) {
+		if (elPartido.JugadoresSeleccionados.contains(this)){
 		calificaciones calificacion = new calificaciones();
 		calificacion.setComentario(critica);
 		calificacion.setCalificacion(nota);
@@ -75,7 +75,11 @@ public class jugador {
 		
 		this.ListaDeCalificaciones.add(calificacion);
 		System.out.println(this.getNombre() + " califica a " + elJugadorCalificado.getNombre() + " con nota " + calificacion.calificacion + " y critica " + calificacion.getComentario());
-		
+		}
+		else
+		{
+			System.out.println("El jugador " +this.getNombre()+ " no participó de este partido");
+		}
 	}
 	
 	//Proponer un amigo

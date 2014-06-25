@@ -81,7 +81,7 @@ public class Main {
 		Juan.inscribirmeA(primerPartido);
 		marcelo.inscribirmeA(primerPartido);
 		gerardo.inscribirmeA(primerPartido); // solidario
-		luis.inscribirmeA(primerPartido);
+//		luis.inscribirmeA(primerPartido);
 		german.inscribirmeA(primerPartido);
 		franco.inscribirmeA(primerPartido);
 		carlitos.inscribirmeA(primerPartido);
@@ -101,8 +101,8 @@ public class Main {
 	
 		
 //		primerPartido.calificacion_jugadores();
-		carlitos.calificar(gerardo, 2, "es de madera!!");
-		
+		carlitos.calificar(primerPartido,gerardo, 2, "es de madera!!");
+		luis.calificar(primerPartido, german, 4, "es pecho frio");
 		pepito.proponerAmigo(carlitos, admin, primerPartido);
 		
 	}

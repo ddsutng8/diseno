@@ -74,7 +74,7 @@ public class jugador {
 		calificacion.setCalificado(elJugadorCalificado);
 		
 		elJugadorCalificado.ListaDeCalificaciones.add(calificacion);
-		System.out.println(this.getNombre() + " califica a " + elJugadorCalificado.getNombre() + " con nota " + calificacion + " y critica " + calificacion.getComentario());
+		System.out.println(this.getNombre() + " califica a " + elJugadorCalificado.getNombre() + " con nota " + calificacion.calificacion + " y critica " + calificacion.getComentario());
 		
 	}
 	

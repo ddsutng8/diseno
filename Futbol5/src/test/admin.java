@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class admin {
-	
+
 	List<rechazados> ListaDeRechazados = new ArrayList<rechazados>();
-	
+
 
 	public void armarPosibleEquipo(partido elPartido) {
 		int limiteJugadores=0;
@@ -29,29 +29,30 @@ public class admin {
 				}			
 			}
 		}else {
-			//Sino hay 10 jugadores estandar..
+			//Si no hay 10 jugadores estandar..
 			//Lleno con jugadores Estandar
 			List<jugador> it2 = elPartido.ListaDeJugadores;
 			for(jugador elem : it2){
 				if (elem instanceof jugadorEstandar){
 					elPartido.JugadoresSeleccionados.add(elem);
 				}
-			}//Si no llene, agrego jugadores condicionales
+			}//Si no llene, agrego jugadores solidarios mientras que la lista no este llena
 			for(jugador elem : elPartido.ListaDeJugadores){
-				if (elem instanceof jugadorCondicional && elPartido.JugadoresSeleccionados.size()<10){
+				if (elem instanceof jugadorSolidario && elPartido.JugadoresSeleccionados.size()<10){
 					elPartido.JugadoresSeleccionados.add(elem);
 				}
 			}
-			//Lleno el resto con jugadores solidarios si la lista no esta llena (10 jugadoreS)
+			//Lleno el resto con jugadores condicionales si la lista no esta llena siempre que sea misma cond
 			for(jugador elem : elPartido.ListaDeJugadores){
-				if (elem instanceof jugadorSolidario && elPartido.JugadoresSeleccionados.size()<10){
+				if (elem instanceof jugadorCondicional && elPartido.JugadoresSeleccionados.size()<10 
+						&& ((jugadorCondicional) elem).getCondicionParaPartido() == elPartido.getCondicionPartido()){
 					elPartido.JugadoresSeleccionados.add(elem);
 				}
 			}
 
 		}
 	}
-	
+
 	//amigos como nuevos jugadores
 	public boolean aprobarRechazarNuevoJugador(jugador unAmigo){
 		boolean resultado=false;
@@ -66,18 +67,17 @@ public class admin {
 		resultado = false; //apruebo o rechazo segun motivo del admin, no se cual es
 		return resultado;
 	}
-	
+
 	public void justificarRechazo(jugador unAmigo){
-	
+
 		rechazados rechazo=new rechazados();
 		rechazo.setFecha(new Date());
 		rechazo.setRechazado(unAmigo);
 		rechazo.setMotivo("Este Motivo");
-				
+
 		System.out.println(unAmigo.getNombre() + " rechazado por " + rechazo.getMotivo());
 		this.ListaDeRechazados.add(rechazo);
 	}
-	
-	
-}
 
+
+}

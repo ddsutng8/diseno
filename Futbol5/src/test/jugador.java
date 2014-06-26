@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public class jugador {
-
+	
 	String nombre;
 	String tipoDeJugador;
 	jugador unReemplazante;
@@ -48,11 +48,11 @@ public class jugador {
 
 	public void darmeDeBaja(partido elPartido) {
 		if (elPartido.ListaDeJugadores.remove(this)) {
-			System.out.println(this.getNombre()+"fue eliminado del partido" );
-			if (this.unReemplazante==null) {
+			System.out.println(this.getNombre()+" fue eliminado del partido" );
+			if (this.getUnReemplazante()==null) {
 				elPartido.penalizar(this);
 			}else{
-				this.unReemplazante.inscribirmeA(elPartido);
+				this.getUnReemplazante().inscribirmeA(elPartido);
 			}
 			
 		} else {
@@ -66,19 +66,19 @@ public class jugador {
 
 	//Calificacion De Jugadores
 	public void calificar(partido elPartido, jugador elJugadorCalificado, int nota, String critica) {
-		if (elPartido.JugadoresSeleccionados.contains(this)){
+		if (elPartido.JugadoresSeleccionados.contains(this) && elPartido.JugadoresSeleccionados.contains(elJugadorCalificado)){
 		calificaciones calificacion = new calificaciones();
 		calificacion.setComentario(critica);
 		calificacion.setCalificacion(nota);
 		calificacion.setCalificador(this);
 		calificacion.setCalificado(elJugadorCalificado);
 		
-		this.ListaDeCalificaciones.add(calificacion);
+		elJugadorCalificado.ListaDeCalificaciones.add(calificacion);
 		System.out.println(this.getNombre() + " califica a " + elJugadorCalificado.getNombre() + " con nota " + calificacion.calificacion + " y critica " + calificacion.getComentario());
 		}
 		else
 		{
-			System.out.println("El jugador " +this.getNombre()+ " quizo calificar, pero no participó de este partido");
+			System.out.println(this.getNombre()+ " no pudo calificar a "+ elJugadorCalificado.getNombre());
 		}
 	}
 	
@@ -86,10 +86,18 @@ public class jugador {
 	public void proponerAmigo(jugador unAmigo, admin elAdmin, partido elPartido){
 		if (elAdmin.aprobarRechazarNuevoJugador(unAmigo)){
 			elPartido.inscribirA(unAmigo);
+			
 		} else {
 			elAdmin.justificarRechazo(unAmigo);
 		}
 		
+	}
+	
+	public jugador getUnReemplazante() {
+		return unReemplazante;
+	}
+	public void proponerReemplazo(jugador unReemplazante) {
+		this.unReemplazante = unReemplazante;
 	}
 	
 }

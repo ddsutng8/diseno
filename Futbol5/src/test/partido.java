@@ -86,6 +86,7 @@ public class partido {
 		infraccion.setJugador(elJugador);
 		infraccion.setMotivo("No indico reemplazo");
 		ListaInfracciones.add(infraccion);
+		System.out.println("Se le creo una infraccion al jugador " + elJugador.getNombre() + " por el motivo: "+ infraccion.getMotivo());
 	}
 	
 //	public void calificacion_jugadores(){

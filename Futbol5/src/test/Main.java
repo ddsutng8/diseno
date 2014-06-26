@@ -81,7 +81,7 @@ public class Main {
 		Juan.inscribirmeA(primerPartido);
 		marcelo.inscribirmeA(primerPartido);
 		gerardo.inscribirmeA(primerPartido); // solidario
-//		luis.inscribirmeA(primerPartido);
+		luis.inscribirmeA(primerPartido);
 		german.inscribirmeA(primerPartido);
 		franco.inscribirmeA(primerPartido);
 		carlitos.inscribirmeA(primerPartido);
@@ -89,7 +89,7 @@ public class Main {
 		//nicolas.inscribirmeA(primerPartido);
 
 		System.out.println("La cantidad de jugadores postulados: " + primerPartido.ListaDeJugadores.size());
-
+		Juan.darmeDeBaja(primerPartido);
 		admin.armarPosibleEquipo(primerPartido);
 
 		System.out.println("La cantidad de jugadores inscriptos: " + primerPartido.JugadoresSeleccionados.size());
@@ -101,9 +101,17 @@ public class Main {
 	
 		
 //		primerPartido.calificacion_jugadores();
+		
 		carlitos.calificar(primerPartido,gerardo, 2, "es de madera!!");
 		luis.calificar(primerPartido, german, 4, "es pecho frio");
 		pepito.proponerAmigo(carlitos, admin, primerPartido);
+		luis.proponerReemplazo(carlitos);
+		luis.darmeDeBaja(primerPartido);
+		jugadorEstandar arnaldo=new jugadorEstandar();
+		arnaldo.setEdad(88);
+		arnaldo.setNombre("arnaldo");
+		arnaldo.inscribirmeA(primerPartido);
+		
 		
 	}
 }
